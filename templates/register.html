@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tiger Patrol Ride Requests</title>
+    <style>
+        body { font-family: Arial; background-color: #f0f8ff; padding: 30px; }
+        h2 { color: #0066cc; }
+        table { width: 100%; border-collapse: collapse; background-color: white; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #0066cc; color: white; }
+        tr.pending { background-color: #cce5ff; }
+        tr.completed { background-color: white; }
+        tr:nth-child(even):not(.pending) { background-color: #f2f2f2; }
+        a.button { padding: 5px 10px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 5px; margin-right: 5px; }
+        a.button:hover { background-color: #0055aa; }
+    </style>
+</head>
+<body>
+    <h2>🐯 Tiger Patrol Ride Requests</h2>
+    <a href="/logout">Logout</a>
+    <table>
+        <tr>
+            <th>ID</th><th>Name</th><th>Student ID</th><th>Pick-Up</th><th>Drop-Off</th>
+            <th>Date</th><th>Time</th><th>Phone</th><th>Email</th><th>Reason</th><th>Status</th><th>Actions</th>
+        </tr>
+        {% for ride in rides %}
+        <tr class="{{ 'pending' if ride[9]=='Pending' else 'completed' }}">
+            <td>{{ ride[0] }}</td><td>{{ ride[1] }}</td><td>{{ ride[2] }}</td>
+            <td>{{ ride[3] }}</td><td>{{ ride[4] }}</td><td>{{ ride[5] }}</td>
+            <td>{{ ride[6] }}</td><td>{{ ride[7] }}</td><td>{{ ride[10] }}</td>
+            <td>{{ ride[8] }}</td>
+            <td>{{ ride[9] }}</td>
+            <td>
+                {% if ride[9]=='Pending' %}
+                <a href="/update/{{ ride[0] }}/Accepted" class="button">Accept</a>
+                <a href="/update/{{ ride[0] }}/Completed" class="button">Complete</a>
+                <a href="/update/{{ ride[0] }}/Cancelled" class="button">Cancel</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
