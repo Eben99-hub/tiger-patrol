@@ -1,0 +1,30 @@
+body {
+    font-family: Arial;
+    background: #f4f6f9;
+  }
+  
+  .container {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    color: #003087;
+  }
+  
+  input, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+  }
+  
+  button {
+    background: #003087;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
